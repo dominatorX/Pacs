@@ -11,6 +11,8 @@ from concurrent.futures import ThreadPoolExecutor, wait
 _imread_executor_pool = ThreadPoolExecutor(max_workers=16)
 
 
+WRF_PATH = "/export/data/wjc/learning/data/rain/wrf_all/"
+
 class UnknownImageFormat(Exception):
     pass
 
@@ -21,7 +23,7 @@ def cv2_read_img(path, read_storage):
 
 
 def wrf_read(path, wrf_storage):
-    wrf_storage[:] = numpy.load("/export/data/wjc/learning/data/rain/wrf_all/"+path[-16:-8]+'.npy')
+    wrf_storage[:] = numpy.load(WRF_PATH+path[-16:-8]+'.npy')
 
 
 def quick_read_frames(path_list, im_h=None, im_w=None, channel=1):

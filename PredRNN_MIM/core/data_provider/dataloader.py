@@ -5,6 +5,9 @@ from core.data_provider import image
 import os
 
 
+Image_Path = '/export/data/civil_proj/HKO_radar_images/radarPNG'
+
+
 def get_exclude_mask():
     with np.load('../data/mask_dat.npz') as dat:
         exclude_mask = dat['exclude_mask'][:]
@@ -28,7 +31,7 @@ def convert_datetime_to_filepath(date_time):
                        'RAD%02d%02d%02d%02d%02d00.png'
                        % (date_time.year - 2000, date_time.month, date_time.day,
                           date_time.hour, date_time.minute))
-    ret = os.path.join('/export/data/civil_proj/HKO_radar_images/radarPNG', ret)
+    ret = os.path.join(Image_Path, ret)
     return ret
 
 

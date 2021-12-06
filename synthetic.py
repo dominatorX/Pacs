@@ -19,6 +19,31 @@ torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.deterministic = True
 
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+patience = 5
+batch_size = 2048
+max_iterations = 32768*128//batch_size
+stop_check = 128*128//batch_size
+valid_iter = 1024*128//batch_size
+LR_step_size = 8192*8//batch_size
+gamma = 0.7
+LR = 0.1
+
+
+order_of_poly = 4
+
+f = xlwt.Workbook()
+sheet = f.add_sheet('AnyCubic', cell_overwrite_ok=True)
+dims = [8]
+h_dim = [8, 16, 32, 64]
+n_layers = [2, 3, 4, 5]
+in_range = 1
+wei_range = 5
+m_names = ["ReLuln", "Sigln", "SPln", "Pac2ln", "Pac3ln",
+           "ReLurn", "Sigrn", "SPrn", "Pac2rn", "Pac3rn",
+          ]
+
 class EarlyStopping:
     def __init__(self, patience=7, verbose=False, delta=0):
         self.patience = patience
@@ -99,29 +124,6 @@ class FNN(nn.Module):
             x = self.act(self.norm[i](self.fnn[i](x)))+x
         return self.fc(x)
 
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-patience = 5
-batch_size = 2048
-max_iterations = 32768*128//batch_size
-stop_check = 128*128//batch_size
-valid_iter = 1024*128//batch_size
-LR_step_size = 8192*8//batch_size
-gamma = 0.7
-LR = 0.1
-
-f = xlwt.Workbook()
-sheet = f.add_sheet('AnyCubic', cell_overwrite_ok=True)
-dims = [8]
-h_dim = [8, 16, 32, 64]
-n_layers = [2, 3, 4, 5]
-order_of_poly = 4
-in_range = 1
-wei_range = 5
-m_names = ["ReLuln", "Sigln", "SPln", "Pac2ln", "Pac3ln",
-           "ReLurn", "Sigrn", "SPrn", "Pac2rn", "Pac3rn",
-          ]
 
 results = np.zeros((len(m_names), len(h_dim), len(n_layers), 5))
 
