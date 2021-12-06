@@ -4,7 +4,7 @@ Official Pytorch implementation for the paper presented on
 WSDM 2022 titled ''*A New Class of Polynomial Activation 
 Functions of Deep Learning for Precipitation Forecasting*''.
 
-##Environment Requirements
+## Environment Requirements
 
 Python 3.6+
 
@@ -14,13 +14,13 @@ opencv-contrib-python
 
 numba
 
-##Dataset
+## Dataset
 For the rainfall prediction, you should apply for HKO-7 Dataset from [HKO-7](https://github.com/sxjscience/HKO-7).
 For the synthetic dataset, data are generated during training.
 
-##Train and Test
+## Train and Test
 
-###ConvGRU
+### ConvGRU
 Pacs are added based on the code of [ConvRNN-pytorch](https://github.com/Hzzone/Precipitation-Nowcasting)
 
 You should first modify file *ConvRNN/now/config.py*. 
@@ -40,7 +40,7 @@ And run `python3 main.py`.
 If you want to test the model, modify the last line of *main.py* to `test()`.
 And run `python3 main.py`. Make sure that model are downloaded to the path *MODEL_SAVE_DIR / MODEL_NAME*
 
-###PredRNN and MIM
+### PredRNN and MIM
 Pacs are added based on the code of [predrnn-pytorch](https://github.com/thuml/predrnn-pytorch)
 
 Go to dir *PredRNN_MIM*.
@@ -62,7 +62,7 @@ And run `python3 run.py`.
 If you want to test the model, modify the last line of *main.py* to `test_()`.
 And run `python3 run.py`. Make sure that model are downloaded to the path *MODEL_SAVE_DIR / MODEL_NAME*
 
-###Synthetic dataset
+### Synthetic dataset
 You can modify `order_of_poly` in *synthetic.py* to approximate polynomials of different orders.
 
 Run `python3 synthetic.py`, you can get an *.xls* file for results.
