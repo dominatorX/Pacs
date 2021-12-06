@@ -18,6 +18,10 @@ numba
 For the rainfall prediction, you should apply for HKO-7 Dataset from [HKO-7](https://github.com/sxjscience/HKO-7).
 For the synthetic dataset, data are generated during training.
 
+
+## Trained Models
+We upload the files to Google Drive [Pacs-trained-models](https://drive.google.com/drive/folders/1VHrW-G83WOjpa-JHadeU9gvxSbcfnUm1?usp=sharing)
+
 ## Train and Test
 
 ### ConvGRU
